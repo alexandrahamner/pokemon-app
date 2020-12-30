@@ -4,10 +4,11 @@ import React from 'react';
 export default function PokemonList({ pokemon }) {
     return (
         <div>
-            {pokemon.map(indivPokemon => (
+            {pokemon.map((pokemon) => {
                 //keys are required for loops. using the pokemon's name as the key.
-                <div key={indivPokemon}>{indivPokemon}</div>
-            ))}
+                return <div key={pokemon}>{pokemon}</div>
+                })
+            }
         </div>
     );
 }
