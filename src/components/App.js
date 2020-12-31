@@ -6,6 +6,7 @@ import SearchBar from './SearchBar';
 
 function App() {
     const pokemonUrl = "https://pokeapi.co/api/v2/pokemon/";
+    const pokemonLimitUrl = "?limit=10"
     const [pokemonData, setPokemonData] = useState([]);
     const [nextPage, setNextPage] = useState();
     const [prevPage, setPrevPage] = useState();
@@ -15,7 +16,7 @@ function App() {
     
     useEffect( () => {
         async function fetchData() {
-            let response = await getPokemonList(pokemonUrl);
+            let response = await getPokemonList(pokemonUrl + pokemonLimitUrl);
             setNextPage(response.next);
             setPrevPage(response.previous);
             await loadingPokemon(response.results);
@@ -100,7 +101,7 @@ function App() {
     if(loading) return "Loading...";
    
     return (
-        <div>
+        <div className="container">
             {error ? (<p>{errorMsg}</p>): null}
             <SearchBar getPokemon={getPokemon} getFavPokemon={getFavPokemon} />
             <div className="grid-container">
