@@ -17,7 +17,7 @@ export default function SearchBar(props) {
                     onChange={(e) => setSearch(e.target.value)}
                 />
                 <button onClick={(e) => {e.preventDefault(); props.getPokemon(search)}} >Search</button>
-                <button>Filter Favorites</button>
+                <button onClick={(e) => {e.preventDefault(); props.getFavPokemon()}} >Filter Favorites</button>
                 <button onClick={(e) => {e.preventDefault(); localStorage.clear()}}>Clear Favorites</button>
             </div>
         </form>

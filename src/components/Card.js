@@ -6,6 +6,7 @@ function Card({ pokemon }) {
     const savePokemon = (event) => {
         event.preventDefault();
         localStorage.setItem(event.target.id , event.target.id);
+        console.log(Object.entries(localStorage)[0][0]);
     }
 
     const removePokemon = (event) => {

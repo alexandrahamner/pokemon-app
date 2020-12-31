@@ -30,7 +30,7 @@ function App() {
     const loadingPokemon = async (data) => {
         //Takes in an array of promises and returns the array once all the promises are resolved
         let pokemonInfo = await Promise.all(data.map(async pokemon => {
-            let pokemonRecord = await getIndivPokemon(pokemon.url);
+            let pokemonRecord = await getIndivPokemon(pokemonUrl + pokemon.name);
             return pokemonRecord;
         }))
         setPokemonData(pokemonInfo);
@@ -61,6 +61,21 @@ function App() {
         
     }
 
+    const getFavPokemon = async () => {
+        const pokemonNames = []
+        for(let i = 0; i < localStorage.length; i++) {
+            pokemonNames.push(localStorage.key(i));
+        }
+        console.log(pokemonNames);
+
+        let pokemonInfo = await Promise.all(pokemonNames.map(async pokemon => {
+            let pokemonRecord = await getIndivPokemon(pokemonUrl + pokemon);
+            return pokemonRecord;
+        }))
+        console.log(pokemonInfo);
+        setPokemonData(pokemonInfo);
+    }
+
     const next = async () => {
         setLoading(true);
         let data = await getPokemonList(nextPage);
@@ -87,7 +102,7 @@ function App() {
     return (
         <div>
             {error ? (<p>{errorMsg}</p>): null}
-            <SearchBar getPokemon={getPokemon}/>
+            <SearchBar getPokemon={getPokemon} getFavPokemon={getFavPokemon} />
             <div className="grid-container">
               {pokemonData.map((pokemon, index) => {
                 return <Card key={index} pokemon={pokemon} />
