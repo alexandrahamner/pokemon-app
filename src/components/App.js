@@ -10,6 +10,8 @@ function App() {
     const [nextPage, setNextPage] = useState();
     const [prevPage, setPrevPage] = useState();
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+    const [errorMsg, setErrorMsg] = useState(false);
     
     useEffect( () => {
         async function fetchData() {
@@ -35,10 +37,28 @@ function App() {
     }
 
     const getPokemon = async (term) => {
+        if (!term) {
+            setErrorMsg('You must enter a Pokemon');
+            setError(true);
+            return;
+          }
+        setError(false);
         setLoading(true);
-        const response = await getIndivPokemon(pokemonUrl + term)
-        console.log(response);
-        setLoading(false);
+        try {
+            setLoading(true);
+            const response = await fetch(pokemonUrl + term)
+            const results = await response.json();
+            console.log(results);
+            setPokemonData([results]);
+            setLoading(false);
+        } 
+        catch (err) {
+            console.log(err);
+            setLoading(false);
+            setErrorMsg('Pokemon Not Found.')
+            setError(true);
+        }
+        
     }
 
     const next = async () => {
@@ -66,6 +86,7 @@ function App() {
    
     return (
         <div>
+            {error ? (<p>{errorMsg}</p>): null}
             <SearchBar getPokemon={getPokemon}/>
             <div className="grid-container">
               {pokemonData.map((pokemon, index) => {
@@ -73,7 +94,7 @@ function App() {
               })}
             </div>
             <div className="btn">
-                <button onClick={prev}>Previous</button>
+                { prevPage ? (<button onClick={prev}>Previous</button>) : null}
                 <button onClick={next}>Next</button>
             </div>
         </div>
