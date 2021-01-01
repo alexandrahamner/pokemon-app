@@ -18,13 +18,18 @@ function Card({ pokemon }) {
 
     return (
         <div className="card">
-            <div className="circle"></div>
             <div className="card-img">
                 <img src={pokemon.sprites.front_default} alt={pokemon.name}></img>
             </div>
-            <div className="card-name">
-                {pokemon.name}
+            <div className="card-title">
+                <div className="card-name">
+                    {pokemon.name}
+                </div>
+                <div className="card-id">
+                    #{pokemon.id}
+                </div>
             </div>
+            <hr />
             {/* <div className="card-info">
                 <div className="card-data card-weight">
                     <p className="data-title">Weight: {(pokemon.weight)/10}kg</p>
@@ -43,6 +48,7 @@ function Card({ pokemon }) {
                     (<div onClick={e => removePokemon(e)}> <i className="fav-icon heart icon big" style={{color: "red" }} id={pokemon.name} /></div>) 
                 }
             </div>
+            <div className="circle"></div>
         </div>
     )
 }
