@@ -14,7 +14,7 @@ function App() {
     const [error, setError] = useState(false);
     const [errorMsg, setErrorMsg] = useState(false);
     
-    useEffect( () => {
+    const showAllPokemon = () => {
         async function fetchData() {
             let response = await getPokemonList(pokemonUrl + pokemonLimitUrl);
             setNextPage(response.next);
@@ -25,7 +25,9 @@ function App() {
         }
 
         fetchData();
-    }, [])
+    }
+
+    useEffect(showAllPokemon, []);
 
     //Makes another call to the API to grab each pokemon's information.
     const loadingPokemon = async (data) => {
@@ -95,18 +97,14 @@ function App() {
         setPrevPage(data.previous);
         setLoading(false);
     }
-
-    // Conditional for the loading animation
-    // TODO: create an animation with pokeball.
-    if(loading) return "Loading...";
    
     return (
         <div className="container">
             {error ? (<p>{errorMsg}</p>): null}
-            <SearchBar getPokemon={getPokemon} getFavPokemon={getFavPokemon} />
+            <SearchBar getPokemon={getPokemon} getFavPokemon={getFavPokemon} showAllPokemon={showAllPokemon}/>
             <div className="grid-container">
               {pokemonData.map((pokemon, index) => {
-                return <Card key={index} pokemon={pokemon} />
+                return <Card loading={loading} key={index} pokemon={pokemon} getFavPokemon={getFavPokemon}/>
               })}
             </div>
             <div className="btn">

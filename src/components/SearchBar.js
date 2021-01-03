@@ -6,10 +6,10 @@ export default function SearchBar(props) {
 
     
     return (
-    <div className="search-container ui top fixed menu mini">
-        <div className="item">Pokemon App</div>
-        <p className="ui icon button item" onClick={(e) => {e.preventDefault(); props.getFavPokemon()}} ><i className="filter-favs icon heart"></i></p>
-        <p className="ui button item" onClick={(e) => window.location.reload}>All</p>
+    <div className="search-container ui top fixed menu small">
+        <div className="header item">Pokemon App</div>
+        <div className="ui icon button item" onClick={(e) => {e.preventDefault(); props.getFavPokemon()}} ><i className="filter-favs icon heart"></i></div>
+        <button className="ui button item" onClick={(e) => {e.preventDefault(); props.showAllPokemon()}}>All</button>
         <div className="right menu">
             <div className="item">
                 <div className="field ui icon input">

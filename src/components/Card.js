@@ -1,19 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./style.css";
 import colorTypes from '../helpers/colorTypes'
 
 //Destructor the prop
-function Card({ pokemon }) {
+function Card({ pokemon, getFavPokemon}) {
+
+    const [favButton, setFavButton] = useState("fav-icon heart outline icon big");
+
+    const changeFavButton = (event) => {
+        event.preventDefault();
+        if(favButton === "fav-icon heart outline icon big") {
+            setFavButton("unfav-icon heart outline icon big")
+        } else if(favButton === "unfav-icon heart outline icon big") {
+            setFavButton("fav-icon heart outline icon big")
+        }
+    }
 
     const savePokemon = (event) => {
-        event.preventDefault();
+        changeFavButton(event);
         localStorage.setItem(event.target.id , event.target.id);
         console.log(Object.entries(localStorage)[0][0]);
     }
 
     const removePokemon = (event) => {
-        event.preventDefault();
+        changeFavButton(event);
         localStorage.removeItem(event.target.id);
+        getFavPokemon();
     }
 
     return (
@@ -44,8 +56,8 @@ function Card({ pokemon }) {
             </div>
             <div className="favorite-button">
                 {!localStorage.getItem(pokemon.name) ? 
-                    (<div onClick={e => savePokemon(e)}> <i className="fav-icon heart outline icon big" style={{color: "lightgrey"}} id={pokemon.name} /></div>) :
-                    (<div onClick={e => removePokemon(e)}> <i className="fav-icon heart icon big" style={{color: "red" }} id={pokemon.name} /></div>) 
+                    (<div onClick={e => {savePokemon(e)}}> <i className="fav-icon heart icon big" id={pokemon.name} /></div>) :
+                    (<div onClick={e => {removePokemon(e)}}> <i className="fav-icon heart icon big" id={pokemon.name} /></div>) 
                 }
             </div>
             <div className="circle"></div>
