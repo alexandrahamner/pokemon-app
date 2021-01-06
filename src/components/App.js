@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {getPokemonList, getIndivPokemon} from '../services/pokemonAPI';
 import Card from "./Card";
+import NavigationBar from './NavigationBar';
 import SearchBar from './SearchBar';
 
 
@@ -101,15 +102,16 @@ function App() {
     return (
         <div className="container">
             {error ? (<p>{errorMsg}</p>): null}
-            <SearchBar getPokemon={getPokemon} getFavPokemon={getFavPokemon} showAllPokemon={showAllPokemon}/>
+            <NavigationBar getFavPokemon={getFavPokemon} showAllPokemon={showAllPokemon}/>
+            <SearchBar getPokemon={getPokemon} />
+            <div className="btn">
+                { prevPage ? (<button className="button prev-btn" onClick={prev}>Previous</button>) : null}
+                <button className="button next-btn" onClick={next}>Next</button>
+            </div>
             <div className="grid-container">
               {pokemonData.map((pokemon, index) => {
                 return <Card loading={loading} key={index} pokemon={pokemon} getFavPokemon={getFavPokemon}/>
               })}
-            </div>
-            <div className="btn">
-                { prevPage ? (<button className="button prev-btn" onClick={prev}>Previous</button>) : null}
-                <button className="button next-btn" onClick={next}>Next</button>
             </div>
         </div>
         

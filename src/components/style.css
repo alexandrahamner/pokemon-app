@@ -4,8 +4,30 @@ body {
     background-attachment: fixed;
 }
 
+.search-container {
+    margin: 80px 0;
+    text-align: center;
+    position: relative;
+}
+
+.search-input {
+    padding: 10px;
+    border-radius: 3em;
+    border: 1px solid  rgb(177, 175, 175);
+    width: 300px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.search-input:focus {
+    outline: none !important;
+}
+
+.search {
+    padding-left: 10px;
+}
+
 .grid-container {
-    margin-top: 100px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -183,9 +205,10 @@ hr {
 
 /* iPads (portrait) ----------- */
 @media only screen and (min-width: 768px) {
-    /* .grid-container {
-        display: flex;
-    } */
+    .search-input:focus {
+        width: 600px;
+        outline: none !important;
+    }
 }
 
    
