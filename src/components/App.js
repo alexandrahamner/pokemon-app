@@ -3,6 +3,7 @@ import {getPokemonList, getIndivPokemon} from '../services/pokemonAPI';
 import Card from "./Card";
 import NavigationBar from './NavigationBar';
 import SearchBar from './SearchBar';
+import Footer from './Footer';
 
 
 function App() {
@@ -118,6 +119,7 @@ function App() {
                 { prevPage ? (<i className="bottom-prev arrow left icon huge" onClick={prev}></i>) : null}
                 <i className="bottom-next arrow right icon huge" onClick={next}></i>
             </div>
+            <Footer />
         </div>
         
         

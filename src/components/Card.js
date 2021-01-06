@@ -51,7 +51,7 @@ function Card({ pokemon, getFavPokemon}) {
                             return <div key={index} className="card-type" style={{ backgroundColor: colorTypes[type.type.name] }}>{type.type.name}</div>
                         })}
                     </div>
-                    <div className="circle"></div>
+                    <div className="circle-background"></div>
                 </div>
 
                 {/* BACK */}

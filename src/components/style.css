@@ -24,6 +24,18 @@ body {
     left: 15%;
 }
 
+.bottom-next {
+    position: absolute;
+    bottom: 240px;
+    right: 15%;
+}
+
+.bottom-prev {
+    position: absolute;
+    bottom: 240px;
+    left: 15%;
+}
+
 .search-container {
     margin: 80px 0;
     text-align: center;
@@ -91,7 +103,7 @@ body {
     backdrop-filter: blur(7.5px);
 }
 
-.circle {
+.circle-background {
     background-color: #70c497;
     box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.2);
     width: 200px;
@@ -222,16 +234,28 @@ hr {
     color: lightgrey;
 }
 
-.bottom-next {
-    position: absolute;
-    bottom: -20px;
-    right: 15%;
+.footer {
+    background-color: #70c497;
+    padding: 20px;
+    text-align: center;
 }
 
-.bottom-prev {
-    position: absolute;
-    bottom: -20px;
-    left: 15%;
+.footer-title {
+    color: white;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: #FFFB7D;
+}
+
+a:visited {
+    color: #d56723;
 }
 
 /* iPads (portrait) ----------- */
@@ -242,9 +266,12 @@ hr {
     }
 
     .next-btn, .prev-btn {
-        top: -5px;
+        top: -10px;
     }
     
+    .bottom-next, .bottom-prev {
+        bottom: 175px;
+    }
 }
 
    
