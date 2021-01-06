@@ -4,18 +4,11 @@ body {
     background-attachment: fixed;
 }
 
-/* .grid-container {
-    display: grid;
-    grid-template-columns: 150px 150px;
-    grid-template-rows: 150px 150px 150px 150px 150px;
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
-    align-items: center;
-    justify-content: center;
-} */
-
 .grid-container {
     margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .flip-card {
@@ -188,3 +181,11 @@ hr {
 }
 
 
+/* iPads (portrait) ----------- */
+@media only screen and (min-width: 768px) {
+    /* .grid-container {
+        display: flex;
+    } */
+}
+
+   

@@ -6,7 +6,7 @@ import SearchBar from './SearchBar';
 
 function App() {
     const pokemonUrl = "https://pokeapi.co/api/v2/pokemon/";
-    const pokemonLimitUrl = "?limit=10"
+    const pokemonLimitUrl = "?limit=12"
     const [pokemonData, setPokemonData] = useState([]);
     const [nextPage, setNextPage] = useState();
     const [prevPage, setPrevPage] = useState();
