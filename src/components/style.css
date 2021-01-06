@@ -234,6 +234,10 @@ hr {
     color: lightgrey;
 }
 
+.unfav-icon {
+    color: red;
+}
+
 .footer {
     background-color: #70c497;
     padding: 20px;

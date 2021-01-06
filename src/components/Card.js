@@ -73,7 +73,7 @@ function Card({ pokemon, getFavPokemon}) {
                     <div className="favorite-button">
                         {!localStorage.getItem(pokemon.name) ? 
                             (<div onClick={e => {savePokemon(e)}}> <i className="fav-icon heart icon big" id={pokemon.name} /></div>) :
-                            (<div onClick={e => {removePokemon(e)}}> <i className="fav-icon heart icon big" id={pokemon.name} /></div>) 
+                            (<div onClick={e => {removePokemon(e)}}> <i className="unfav-icon heart icon big" id={pokemon.name} /></div>) 
                         }
                     </div>
                 </div>
