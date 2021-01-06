@@ -4,6 +4,26 @@ body {
     background-attachment: fixed;
 }
 
+.container {
+    position: relative;
+}
+
+.arrow {
+    color:rgb(24, 122, 77);
+}
+
+.next-btn {
+    position: absolute;
+    top: 55px;
+    right: 15%;
+}
+
+.prev-btn {
+    position: absolute;
+    top: 55px;
+    left: 15%;
+}
+
 .search-container {
     margin: 80px 0;
     text-align: center;
@@ -193,7 +213,7 @@ hr {
     right: 20px;
 }
 
-.favorite-button:hover {
+.favorite-button:hover, .arrow:hover {
     transform: translateY(-3px);
     cursor: pointer;
 }
@@ -202,6 +222,17 @@ hr {
     color: lightgrey;
 }
 
+.bottom-next {
+    position: absolute;
+    bottom: -20px;
+    right: 15%;
+}
+
+.bottom-prev {
+    position: absolute;
+    bottom: -20px;
+    left: 15%;
+}
 
 /* iPads (portrait) ----------- */
 @media only screen and (min-width: 768px) {
@@ -209,6 +240,11 @@ hr {
         width: 600px;
         outline: none !important;
     }
+
+    .next-btn, .prev-btn {
+        top: -5px;
+    }
+    
 }
 
    

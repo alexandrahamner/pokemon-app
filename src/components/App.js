@@ -7,7 +7,7 @@ import SearchBar from './SearchBar';
 
 function App() {
     const pokemonUrl = "https://pokeapi.co/api/v2/pokemon/";
-    const pokemonLimitUrl = "?limit=12"
+    const pokemonLimitUrl = "?limit=24"
     const [pokemonData, setPokemonData] = useState([]);
     const [nextPage, setNextPage] = useState();
     const [prevPage, setPrevPage] = useState();
@@ -105,13 +105,18 @@ function App() {
             <NavigationBar getFavPokemon={getFavPokemon} showAllPokemon={showAllPokemon}/>
             <SearchBar getPokemon={getPokemon} />
             <div className="btn">
-                { prevPage ? (<button className="button prev-btn" onClick={prev}>Previous</button>) : null}
-                <button className="button next-btn" onClick={next}>Next</button>
+                { prevPage ? (<i className="button prev-btn arrow left icon huge" onClick={prev}></i>) : null}
+                <i className="button next-btn arrow right icon huge" onClick={next}></i>
             </div>
             <div className="grid-container">
               {pokemonData.map((pokemon, index) => {
                 return <Card loading={loading} key={index} pokemon={pokemon} getFavPokemon={getFavPokemon}/>
               })}
+            </div>
+            <SearchBar className="bottom-search" getPokemon={getPokemon} />
+            <div className="btn">
+                { prevPage ? (<i className="bottom-prev arrow left icon huge" onClick={prev}></i>) : null}
+                <i className="bottom-next arrow right icon huge" onClick={next}></i>
             </div>
         </div>
         
