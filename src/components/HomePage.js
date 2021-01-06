@@ -4,7 +4,7 @@ import Card from "./Card";
 import SearchBar from './SearchBar';
 
 
-function App() {
+function HomePage() {
     const pokemonUrl = "https://pokeapi.co/api/v2/pokemon/";
     const pokemonLimitUrl = "?limit=10"
     const [pokemonData, setPokemonData] = useState([]);
@@ -117,4 +117,4 @@ function App() {
     );
 }
 
-export default App;
+export default HomePage;
